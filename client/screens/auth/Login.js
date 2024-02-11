@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import InputBox from "../../components/FORMS/InputBox";
 import SubmitButton from "../../components/FORMS/SubmitButton";
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -49,7 +49,13 @@ const Login = () => {
         handleSubmit={handleSubmit}
       />
       <Text style={styles.linkText}>
-        Not Registered? <Text style={styles.link}>REGISTER</Text>{" "}
+        Not Registered?{" "}
+        <Text
+          style={styles.link}
+          onPress={() => navigation.navigate("Register")}
+        >
+          REGISTER
+        </Text>{" "}
       </Text>
     </View>
   );
