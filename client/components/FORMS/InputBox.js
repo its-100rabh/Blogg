@@ -6,6 +6,8 @@ const InputBox = ({
   autoComplete,
   keyboardType,
   secureTextEntry = false,
+  value,
+  setValue,
 }) => {
   return (
     <View>
@@ -16,6 +18,8 @@ const InputBox = ({
         keyboardType={keyboardType}
         autoComplete={autoComplete}
         secureTextEntry={secureTextEntry}
+        value={value}
+        onChangeText={(text) => setValue(text)}
       />
     </View>
   );

@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import InputBox from "../../components/FORMS/InputBox";
 import SubmitButton from "../../components/FORMS/SubmitButton";
 
-const Register = () => {
-  const [name, setName] = useState("");
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -12,12 +11,12 @@ const Register = () => {
   const handleSubmit = () => {
     try {
       setLoading(true);
-      if (!name || !email || !password) {
+      if (!email || !password) {
         Alert.alert("Please fill all fields.");
         setLoading(false);
         return;
       }
-      console.log("Data => ", { name, email, password });
+      console.log("Data => ", { email, password });
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -26,9 +25,8 @@ const Register = () => {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.pagetitle}>REGISTER</Text>
+      <Text style={styles.pagetitle}>LOGIN</Text>
       <View style={{ marginHorizontal: 20 }}>
-        <InputBox inputTitle={"NAME"} value={name} setValue={setName} />
         <InputBox
           inputTitle={"E-MAIL"}
           keyboardType="email-address"
@@ -46,18 +44,18 @@ const Register = () => {
       </View>
       {/* <Text>{JSON.stringify({name,email,password},null,4)}</Text> */}
       <SubmitButton
-        btntitle="REGISTER"
+        btntitle="LOGIN"
         loading={loading}
         handleSubmit={handleSubmit}
       />
       <Text style={styles.linkText}>
-        Already Registered? <Text style={styles.link}>LOGIN</Text>{" "}
+        Not Registered? <Text style={styles.link}>REGISTER</Text>{" "}
       </Text>
     </View>
   );
 };
 
-export default Register;
+export default Login;
 
 const styles = StyleSheet.create({
   container: {
