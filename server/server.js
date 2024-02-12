@@ -3,9 +3,13 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const colors = require("colors");
 const morgan = require("morgan");
+const connectDB = require("./config/db");
 
 //DOTENV
 dotenv.config();
+
+//MONGODB Connection
+connectDB();
 
 //REST
 const app = express();
@@ -19,12 +23,7 @@ app.use(morgan("dev"));
 const PORT = process.env.PORT || 8080;
 
 //ROUTES
-app.get("", (req, res) => {
-  res.status(200).json({
-    success: true,
-    message: "welcome",
-  });
-});
+app.use('/api/v1/auth',require('./routes/userRoutes'))
 
 app.listen(PORT, () => {
   console.log(`Server Running ${PORT}`.bgGreen.white);
