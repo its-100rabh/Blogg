@@ -1,5 +1,6 @@
 import { Alert, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
+import axios from "axios";
 import InputBox from "../../components/FORMS/InputBox";
 import SubmitButton from "../../components/FORMS/SubmitButton";
 
@@ -9,7 +10,7 @@ const Register = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     try {
       setLoading(true);
       if (!name || !email || !password) {
@@ -17,9 +18,16 @@ const Register = ({ navigation }) => {
         setLoading(false);
         return;
       }
-      console.log("Data => ", { name, email, password });
       setLoading(false);
+      //localhost will not work because both the server and this is working on localhost. Use IP instead
+      const { data } = await axios.post(
+        "http://192.168.16.105:8080/api/v1/auth/register",
+        { name, email, password }
+      );
+      alert(data && data.message);
+      console.log("Data => ", { name, email, password });
     } catch (error) {
+      alert(error.response.data.message);
       setLoading(false);
       console.log(error);
     }
