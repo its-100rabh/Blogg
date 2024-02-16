@@ -20,11 +20,13 @@ const Register = ({ navigation }) => {
       }
       setLoading(false);
       //localhost will not work because both the server and this is working on localhost. Use IP instead
-      const { data } = await axios.post(
-        "http://192.168.16.105:8080/api/v1/auth/register",
-        { name, email, password }
-      );
+      const { data } = await axios.post("/auth/register", {
+        name,
+        email,
+        password,
+      });
       alert(data && data.message);
+      navigation.navigate("Login");
       console.log("Data => ", { name, email, password });
     } catch (error) {
       alert(error.response.data.message);

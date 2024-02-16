@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
 
 //context creation
 const AuthContext = createContext();
@@ -11,6 +12,9 @@ const AuthProvider = ({ children }) => {
     user: null,
     token: "",
   });
+
+  //default
+  axios.defaults.baseURL = "http://192.168.16.105:8080/api/v1";
 
   //initial local storage data
   useEffect(() => {
