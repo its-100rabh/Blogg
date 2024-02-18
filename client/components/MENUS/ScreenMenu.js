@@ -6,6 +6,9 @@ import Register from "../../screens/auth/Register";
 import Login from "../../screens/auth/Login";
 import { AuthContext } from "../../context/authContext";
 import HeaderMenu from "./HeaderMenu";
+import Post from "../../screens/Post";
+import About from "../../screens/About";
+import Account from "../../screens/Account";
 
 const ScreenMenu = () => {
   const [state] = useContext(AuthContext);
@@ -20,6 +23,24 @@ const ScreenMenu = () => {
             name="Home"
             options={{ headerRight: () => <HeaderMenu /> }}
             component={Home}
+          />
+          <Stack.Screen
+            name="Post"
+            options={{
+              headerBackTitle: "Back",
+              headerRight: () => <HeaderMenu />,
+            }}
+            component={Post}
+          />
+          <Stack.Screen
+            name="About"
+            options={{ headerRight: () => <HeaderMenu /> }}
+            component={About}
+          />
+          <Stack.Screen
+            name="Account"
+            options={{ headerRight: () => <HeaderMenu /> }}
+            component={Account}
           />
         </>
       ) : (

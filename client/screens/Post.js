@@ -6,7 +6,9 @@ import FooterMenu from "../components/MENUS/FooterMenu";
 const Post = () => {
   return (
     <View style={styles.container}>
-      <FooterMenu />
+      <View style={{ flex: 1, justifyContent: "flex-end" }}>
+        <FooterMenu />
+      </View>
     </View>
   );
 };
