@@ -2,10 +2,6 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-import Home from "../../screens/Home";
-import Post from "../../screens/Post";
-import About from "../../screens/About";
-import Account from "../../screens/Account";
 
 const FooterMenu = () => {
   const navigation = useNavigation();
