@@ -2,6 +2,7 @@ const express = require("express");
 const {
   registerController,
   loginController,
+  updateUserController,
 } = require("../controllers/userController");
 
 //router object
@@ -14,5 +15,8 @@ router.post("/register", registerController);
 
 //LOGIN || POST
 router.post("/login", loginController);
+
+//UPDATE // PUT
+router.put("/update-user", updateUserController);
 
 module.exports = router;
