@@ -86,7 +86,9 @@ const Account = () => {
         </View>
         <View style={{ alignItems: "center", margin: 20 }}>
           <TouchableOpacity style={styles.updateBtn} onPress={handleUpdate}>
-            <Text style={styles.updateBtntext}>Update Profile</Text>
+            <Text style={styles.updateBtntext}>
+              {loading ? "Please Wait" : "Update Profile"}
+            </Text>
           </TouchableOpacity>
         </View>
         {/* <Text>NAME : {state?.user.name}</Text>
