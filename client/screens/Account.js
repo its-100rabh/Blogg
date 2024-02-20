@@ -1,4 +1,4 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useContext } from "react";
 import { AuthContext } from "../context/authContext";
 import FooterMenu from "../components/MENUS/FooterMenu";
@@ -18,6 +18,10 @@ const Account = () => {
       <Text style={styles.warningtext}>
         You can currently update your name and password only.
       </Text>
+      <View style={styles.input}>
+        <Text style={styles.inputText}>Name</Text>
+        <TextInput style={styles.inputBox} value={state?.user.name} />
+      </View>
       <Text>NAME : {state?.user.name}</Text>
       <Text>Email : {state?.user.email}</Text>
       <Text>ROLE : {state?.user.role}</Text>
@@ -43,4 +47,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 10,
   },
+  input: {
+    marginTop: 20,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  inputText: {
+    fontWeight: "bold",
+    width: 70,
+    color: "gray",
+  },
+  inputBox: {
+    width:250,
+    backgroundColor:'#ffffff',
+    marginLeft:10,
+  }
 });
