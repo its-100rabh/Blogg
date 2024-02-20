@@ -22,9 +22,29 @@ const Account = () => {
         <Text style={styles.inputText}>Name</Text>
         <TextInput style={styles.inputBox} value={state?.user.name} />
       </View>
-      <Text>NAME : {state?.user.name}</Text>
+      <View style={styles.input}>
+        <Text style={styles.inputText}>E-mail</Text>
+        <TextInput
+          style={styles.inputBox}
+          value={state?.user.email}
+          editable={false}
+        />
+      </View>
+      <View style={styles.input}>
+        <Text style={styles.inputText}>Password</Text>
+        <TextInput style={styles.inputBox} value={state?.user.password} />
+      </View>
+      <View style={styles.input}>
+        <Text style={styles.inputText}>Role</Text>
+        <TextInput
+          style={styles.inputBox}
+          value={state?.user.role}
+          editable={false}
+        />
+      </View>
+      {/* <Text>NAME : {state?.user.name}</Text>
       <Text>Email : {state?.user.email}</Text>
-      <Text>ROLE : {state?.user.role}</Text>
+      <Text>ROLE : {state?.user.role}</Text> */}
       <View style={{ flex: 1, justifyContent: "flex-end" }}>
         <FooterMenu />
       </View>
@@ -57,10 +77,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     width: 70,
     color: "gray",
+    fontSize: 15,
   },
   inputBox: {
-    width:250,
-    backgroundColor:'#ffffff',
-    marginLeft:10,
-  }
+    width: 250,
+    backgroundColor: "#ffffff",
+    marginLeft: 10,
+    fontSize: 16,
+    paddingLeft: 20,
+    borderRadius: 5,
+  },
 });
