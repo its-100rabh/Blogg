@@ -1,6 +1,13 @@
 const jwt = require("jsonwebtoken");
 const { hashPassword, comparePassword } = require("../helpers/authHelper");
 const userModel = require("../models/userModel");
+var { expressjwt: expjwt } = require("express-jwt");
+
+//middleware
+const requireSignIn = expjwt({
+  secret: process.env.JWT_secret,
+  algorithms: ["HS256"],
+});
 
 //register
 const registerController = async (req, res) => {
@@ -137,7 +144,7 @@ const updateUserController = async (req, res) => {
     res.status(201).send({
       success: true,
       message: "Profile Updated Successfully. Please Login.",
-      updatedUser
+      updatedUser,
     });
   } catch (error) {
     console.log(error);
@@ -149,4 +156,9 @@ const updateUserController = async (req, res) => {
   }
 };
 
-module.exports = { registerController, loginController, updateUserController };
+module.exports = {
+  requireSignIn,
+  registerController,
+  loginController,
+  updateUserController,
+};
