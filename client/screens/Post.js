@@ -10,15 +10,36 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import FooterMenu from "../components/MENUS/FooterMenu";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import axios from "axios";
 
-const Post = () => {
+const Post = ({ navigation }) => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
 
   //handle form post data
-  const handlePost = () => {
-    alert(`Your post title is ${title} and post description is ${description}`);
+  const handlePost = async () => {
+    // alert(`Your post title is ${title} and post description is ${description}`);
+    try {
+      setLoading(true);
+      if (!title) {
+        alert("Please add the post title.");
+      }
+      if (!description) {
+        alert("Please add the post description.");
+      }
+      const { data } = await axios.post("/post/create-post", {
+        title,
+        description,
+      });
+      setLoading(false);
+      alert(data?.message);
+      navigation.navigate("Home");
+    } catch (error) {
+      alert(error.response.data.message || error.message);
+      setLoading(false);
+      console.log(error);
+    }
   };
   return (
     <View style={styles.container}>
