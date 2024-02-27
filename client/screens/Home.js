@@ -13,7 +13,7 @@ const Home = () => {
       {/* <Text>{JSON.stringify(post, null, 4)}</Text> */}
       <ScrollView>
         <PostComponent post={post}/>
-        <Text>{JSON.stringify(post, null, 4)}</Text>
+        {/* <Text>{JSON.stringify(post, null, 4)}</Text> */}
       </ScrollView>
       <View style={{ backgroundColor: "white" }}>
         <FooterMenu />
