@@ -14,7 +14,7 @@ import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import axios from "axios";
 
 const Post = ({ navigation }) => {
-  const [posts, setPosts] = useContext(Post);
+  const [posts, setPosts] = useContext(PostContext);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);

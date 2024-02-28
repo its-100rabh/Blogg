@@ -8,7 +8,7 @@ const PostComponent = ({ post }) => {
     <View>
       <Text style={styles.heading}>Total Post : {post?.length}</Text>
       {post?.map((post, i) => (
-        <View style={styles.card}>
+        <View style={styles.card} key={i}>
           <Text style={styles.title}>Title : {post?.title}</Text>
           <Text style={styles.desc}> {post?.description}</Text>
           <View style={styles.footer}>
