@@ -56,13 +56,18 @@ const getAllPostsController = async (req, res) => {
 const getUserPostsController = async (req, res) => {
   try {
     const userPost = await postModel.find({ postedBy: req.auth._id });
+    res.status(200).send({
+      success: true,
+      message: "User Posts Data",
+      userPost,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({
       success: false,
       message: "Error in Get User Post API",
       error,
-    });
+    }); 
   }
 };
 
