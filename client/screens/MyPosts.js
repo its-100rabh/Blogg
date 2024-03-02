@@ -32,7 +32,7 @@ const MyPosts = () => {
       {/* <Text>{JSON.stringify(post, null, 4)}</Text> */}
       <ScrollView>
         {/* <Text>{JSON.stringify(posts, null, 4)}</Text> */}
-        <PostComponent post={posts} />
+        <PostComponent post={posts} myPostScreen={true} />
       </ScrollView>
       <View style={{ backgroundColor: "white" }}>
         <FooterMenu />

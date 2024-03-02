@@ -3,12 +3,20 @@ import React from "react";
 import moment from "moment";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
-const PostComponent = ({ post }) => {
+const PostComponent = ({ post, myPostScreen }) => {
   return (
     <View>
       <Text style={styles.heading}>Total Post : {post?.length}</Text>
       {post?.map((post, i) => (
         <View style={styles.card} key={i}>
+          {myPostScreen && (
+            <View>
+              <Text style={{ textAlign: "right" }}>
+                <FontAwesome5 name="trash" size={16} color={"red"} />{" "}
+              </Text>
+            </View>
+          )}
+
           <Text style={styles.title}>Title : {post?.title}</Text>
           <Text style={styles.desc}> {post?.description}</Text>
           <View style={styles.footer}>
