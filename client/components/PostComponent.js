@@ -4,6 +4,7 @@ import moment from "moment";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
+import EditModal from "./EditModal";
 
 const PostComponent = ({ post, myPostScreen }) => {
   const [loading, setLoading] = useState(false);
@@ -41,6 +42,7 @@ const PostComponent = ({ post, myPostScreen }) => {
   return (
     <View>
       <Text style={styles.heading}>Total Post : {post?.length}</Text>
+      {myPostScreen && <EditModal />}
       {post?.map((post, i) => (
         <View style={styles.card} key={i}>
           {myPostScreen && (
