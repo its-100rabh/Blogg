@@ -44,8 +44,16 @@ const PostComponent = ({ post, myPostScreen }) => {
       {post?.map((post, i) => (
         <View style={styles.card} key={i}>
           {myPostScreen && (
-            <View>
-              <Text style={{ textAlign: "right" }}>
+            <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
+              <Text style={{ marginHorizontal: 20 }}>
+                <FontAwesome5
+                  name="pen"
+                  size={16}
+                  color={"darkblue"}
+                  onPress={() => handleDeletePrompt(post?._id)}
+                />{" "}
+              </Text>
+              <Text>
                 <FontAwesome5
                   name="trash"
                   size={16}
