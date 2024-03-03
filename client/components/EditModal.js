@@ -1,8 +1,45 @@
-import React, { useState } from "react";
-import { Alert, Modal, StyleSheet, Text, Pressable, View, TextInput } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  Alert,
+  Modal,
+  StyleSheet,
+  Text,
+  Pressable,
+  View,
+  TextInput,
+} from "react-native";
+import axios from "axios";
+import { useNavigation } from "@react-navigation/native";
 
-const EditModal = () => {
-  const [modalVisible, setModalVisible] = useState(false);
+const EditModal = ({ modalVisible, setModalVisible, post }) => {
+  const navigation = useNavigation();
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  //handle update post
+  const updatePostHandler = async (id) => {
+    try {
+      setLoading(true);
+      const { data } = await axios.put(`/post/update-post/${id}`, {
+        title,
+        description,
+      });
+      setLoading(false);
+      alert(data?.message);
+      navigation.push("Myposts");
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+      alert(erorr);
+    }
+  };
+
+  //inital post data\
+  useEffect(() => {
+    setTitle(post?.title);
+    setDescription(post?.description);
+  }, [post]);
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -16,32 +53,49 @@ const EditModal = () => {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            <Text style={styles.modalText}>Update Post!</Text>
+            {/* <Text>{JSON.stringify(post, null, 4)}</Text> */}
+            <Text style={styles.modalText}>Update Your Post!</Text>
             <Text>Title</Text>
-            <TextInput/>
+            <TextInput
+              style={styles.inputBox}
+              value={title}
+              onChangeText={(text) => {
+                setTitle(text);
+              }}
+            />
             <Text>Description</Text>
-            <TextInput/>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </Pressable>
+            <TextInput
+              style={styles.inputBox}
+              multiline={true}
+              numberOfLines={4}
+              value={description}
+              onChangeText={(text) => setDescription(text)}
+            />
+            <View style={styles.btnContainer}>
+              <Pressable
+                style={styles.button}
+                onPress={() => {
+                  updatePostHandler(post && post._id),
+                    setModalVisible(!modalVisible);
+                }}
+              >
+                <Text style={styles.textStyle}>
+                  {loading ? "Please Wait" : "UPDATE"}
+                </Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text style={styles.textStyle}>CANCEL</Text>
+              </Pressable>
+            </View>
           </View>
         </View>
       </Modal>
-      <Pressable
-        style={[styles.button, styles.buttonOpen]}
-        onPress={() => setModalVisible(true)}
-      >
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </Pressable>
     </View>
   );
 };
-
-export default EditModal;
-
 const styles = StyleSheet.create({
   centeredView: {
     flex: 1,
@@ -54,7 +108,6 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 10,
     padding: 35,
-    // alignItems: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -64,16 +117,33 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  inputBox: {
+    marginBottom: 20,
+    paddingTop: 10,
+    textAlignVertical: "top",
+    backgroundColor: "whitesmoke",
+    borderRadius: 10,
+    marginTop: 10,
+    paddingLeft: 10,
+    borderColor: "lightgray",
+    borderWidth: 2,
+  },
+  btnContainer: {
+    flexDirection: "row",
+  },
   button: {
-    borderRadius: 20,
+    borderRadius: 10,
     padding: 10,
+    backgroundColor: "black",
     elevation: 2,
+    width: 100,
+    margin: 10,
   },
   buttonOpen: {
-    backgroundColor: "#F194FF",
+    // backgroundColor: "#F194FF",
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "red",
   },
   textStyle: {
     color: "white",
@@ -83,5 +153,8 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 16,
   },
 });
+export default EditModal;
