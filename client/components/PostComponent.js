@@ -8,6 +8,8 @@ import EditModal from "./EditModal";
 
 const PostComponent = ({ post, myPostScreen }) => {
   const [loading, setLoading] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [Post, setPost] = useState({});
   const navigation = useNavigation();
   //handlepromt
   const handleDeletePrompt = (id) => {
@@ -42,7 +44,13 @@ const PostComponent = ({ post, myPostScreen }) => {
   return (
     <View>
       <Text style={styles.heading}>Total Post : {post?.length}</Text>
-      {myPostScreen && <EditModal />}
+      {myPostScreen && (
+        <EditModal
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+          Post={Post}
+        />
+      )}
       {post?.map((post, i) => (
         <View style={styles.card} key={i}>
           {myPostScreen && (
@@ -52,8 +60,10 @@ const PostComponent = ({ post, myPostScreen }) => {
                   name="pen"
                   size={16}
                   color={"darkblue"}
-                  onPress={() => handleDeletePrompt(post?._id)}
-                />{" "}
+                  onPress={() => {
+                    setPost(post), setModalVisible(true);
+                  }}
+                />
               </Text>
               <Text>
                 <FontAwesome5

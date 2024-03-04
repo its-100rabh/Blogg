@@ -11,7 +11,7 @@ import {
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 
-const EditModal = ({ modalVisible, setModalVisible, post }) => {
+const EditModal = ({ modalVisible, setModalVisible, Post }) => {
   const navigation = useNavigation();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -27,19 +27,19 @@ const EditModal = ({ modalVisible, setModalVisible, post }) => {
       });
       setLoading(false);
       alert(data?.message);
-      navigation.push("Myposts");
+      navigation.push("MyPosts");
     } catch (error) {
       setLoading(false);
       console.log(error);
-      alert(erorr);
+      alert(error);
     }
   };
 
   //inital post data\
   useEffect(() => {
-    setTitle(post?.title);
-    setDescription(post?.description);
-  }, [post]);
+    setTitle(Post?.title);  
+    setDescription(Post?.description);
+  }, [Post]);
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -75,7 +75,7 @@ const EditModal = ({ modalVisible, setModalVisible, post }) => {
               <Pressable
                 style={styles.button}
                 onPress={() => {
-                  updatePostHandler(post && post._id),
+                  updatePostHandler(Post && Post._id),
                     setModalVisible(!modalVisible);
                 }}
               >

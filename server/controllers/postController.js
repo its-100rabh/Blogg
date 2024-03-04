@@ -92,9 +92,26 @@ const deletePostController = async (req, res) => {
 
 const updatePostController = async (req, res) => {
   try {
+    const { title, description } = req.body;
+    const post = await postModel.findById({ _id: req.params.id });
+    if (!title || !description) {
+      return res.status(500).send({
+        success: false,
+        message: "Please provide the post title or description.",
+      });
+    }
+    const updatedPost = await postModel.findByIdAndUpdate(
+      { _id: req.params.id },
+      {
+        title: title || post?.title,
+        description: description || post?.description,
+      },
+      { new: true }
+    );
     res.status(200).send({
       success: true,
       message: "Post Updated",
+      updatedPost,
     });
   } catch (error) {
     console.log(error);
