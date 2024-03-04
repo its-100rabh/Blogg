@@ -90,9 +90,26 @@ const deletePostController = async (req, res) => {
   }
 };
 
+const updatePostController = async (req, res) => {
+  try {
+    res.status(200).send({
+      success: true,
+      message: "Post Updated",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "Error in Update Post API",
+      error,
+    });
+  }
+};
+
 module.exports = {
   createPostController,
   getAllPostsController,
   getUserPostsController,
   deletePostController,
+  updatePostController,
 };
