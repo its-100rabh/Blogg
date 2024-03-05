@@ -34,7 +34,7 @@ const PostComponent = ({ post, myPostScreen }) => {
       const { data } = await axios.delete(`/post/delete-post/${id}`);
       setLoading(false);
       alert(data?.message);
-      navigation.navigate("Home");
+      navigation.push("MyPosts");
     } catch (error) {
       setLoading(false);
       console.log(error);
