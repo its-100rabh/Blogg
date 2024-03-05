@@ -5,7 +5,7 @@ import {
   View,
   RefreshControl,
 } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import FooterMenu from "../components/MENUS/FooterMenu";
 import { PostContext } from "../context/postContext";
@@ -15,10 +15,24 @@ const Home = () => {
   // const [state] = useContext(AuthContext);
   const [post, getAllPosts] = useContext(PostContext);
   const [refreshing, setRefreshing] = useState(false);
+
+  useEffect(() => {}, [getAllPosts]);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    getAllPosts;
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 2000);
+  }, []);
   return (
     <View style={styles.container}>
       {/* <Text>{JSON.stringify(post, null, 4)}</Text> */}
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
         <PostComponent post={post} />
         {/* <Text>{JSON.stringify(post, null, 4)}</Text> */}
       </ScrollView>
