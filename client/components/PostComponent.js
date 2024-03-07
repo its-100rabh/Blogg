@@ -80,19 +80,17 @@ const PostComponent = ({ post, myPostScreen }) => {
           )}
 
           <Text style={styles.title}>Title : {post?.title}</Text>
-          <Text style={styles.desc}> {post?.description}</Text>
+          <Text style={styles.desc}>{post?.description}</Text>
           <View style={styles.footer}>
             {post?.postedBy?.name && (
               <Text>
-                {" "}
-                <FontAwesome5 name="user" color={"orange"} />{" "}
+                <FontAwesome5 name="user" color={"red"} size={14}/>{" "}
                 {post?.postedBy?.name}
               </Text>
             )}
             <Text>
-              {" "}
-              <FontAwesome5 name="clock" color={"orange"} />{" "}
-              {moment(post?.createdAt).format("DD:MM:YYYY")}
+              <FontAwesome5 name="clock" color={"red"} size={14}/>{" "}
+              {moment(post?.createdAt).format("DD/MM/YYYY")}
             </Text>
           </View>
         </View>
