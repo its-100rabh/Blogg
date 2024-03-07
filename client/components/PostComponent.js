@@ -43,7 +43,10 @@ const PostComponent = ({ post, myPostScreen }) => {
   };
   return (
     <View>
-      <Text style={styles.heading}>Total Post : {post?.length}</Text>
+      <Text style={styles.heading}>Total Blogs : {post?.length}</Text>
+      <Text style={styles.warningtext}>
+        *Restart the app to check the latest blogs on the top.
+      </Text>
       {myPostScreen && (
         <EditModal
           modalVisible={modalVisible}
@@ -104,6 +107,8 @@ const styles = StyleSheet.create({
   heading: {
     color: "green",
     textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 20,
   },
   card: {
     width: "100%",
@@ -121,5 +126,11 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 20,
+  },
+  warningtext: {
+    color: "red",
+    fontSize: 12,
+    textAlign: "center",
+    margin: 10,
   },
 });
