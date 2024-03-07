@@ -22,7 +22,7 @@ const FooterMenu = () => {
           style={styles.iconstyle}
           color={route.name === "Post" && "orange"}
         />
-        <Text>Post</Text>
+        <Text>Blog</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("MyPosts")}>
         <FontAwesome5
@@ -30,7 +30,7 @@ const FooterMenu = () => {
           style={styles.iconstyle}
           color={route.name === "MyPosts" && "orange"}
         />
-        <Text>My Posts</Text>
+        <Text>My Blogs</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => navigation.navigate("Account")}>
         <FontAwesome5
@@ -49,8 +49,11 @@ export default FooterMenu;
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    margin: 10,
     justifyContent: "space-between",
+    marginBottom: 0,
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
   },
   iconstyle: {
     marginBottom: 3,

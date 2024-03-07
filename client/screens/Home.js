@@ -36,7 +36,7 @@ const Home = () => {
         <PostComponent post={post} />
         {/* <Text>{JSON.stringify(post, null, 4)}</Text> */}
       </ScrollView>
-      <View style={{ backgroundColor: "white" }}>
+      <View>
         <FooterMenu />
       </View>
     </View>
