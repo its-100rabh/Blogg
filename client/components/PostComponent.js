@@ -84,12 +84,12 @@ const PostComponent = ({ post, myPostScreen }) => {
           <View style={styles.footer}>
             {post?.postedBy?.name && (
               <Text>
-                <FontAwesome5 name="user" color={"red"} size={14}/>{" "}
+                <FontAwesome5 name="user" color={"red"} size={14} />{" "}
                 {post?.postedBy?.name}
               </Text>
             )}
             <Text>
-              <FontAwesome5 name="clock" color={"red"} size={14}/>{" "}
+              <FontAwesome5 name="clock" color={"red"} size={14} />{" "}
               {moment(post?.createdAt).format("DD/MM/YYYY")}
             </Text>
           </View>
@@ -110,8 +110,8 @@ const styles = StyleSheet.create({
   },
   card: {
     width: "100%",
-    backgroundColor: "white",
-    borderWidth: 0.2,
+    backgroundColor: "#e1d5c9",
+    borderWidth: 1,
     padding: 20,
     borderRadius: 5,
     marginVertical: 10,
@@ -119,6 +119,7 @@ const styles = StyleSheet.create({
   title: {
     fontWeight: "bold",
     paddingBottom: 10,
+    fontSize: 15,
   },
   footer: {
     flexDirection: "row",
