@@ -56,30 +56,33 @@ const PostComponent = ({ post, myPostScreen }) => {
       )}
       {post?.map((post, i) => (
         <View style={styles.card} key={i}>
-          {myPostScreen && (
-            <View style={{ flexDirection: "row", justifyContent: "flex-end" }}>
-              <Text style={{ marginHorizontal: 20 }}>
-                <FontAwesome5
-                  name="pen"
-                  size={16}
-                  color={"darkblue"}
-                  onPress={() => {
-                    setPost(post), setModalVisible(true);
-                  }}
-                />
-              </Text>
-              <Text>
-                <FontAwesome5
-                  name="trash"
-                  size={16}
-                  color={"red"}
-                  onPress={() => handleDeletePrompt(post?._id)}
-                />{" "}
-              </Text>
-            </View>
-          )}
-
-          <Text style={styles.title}>Title : {post?.title}</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={styles.title}>Title: {post?.title}</Text>
+            {myPostScreen && (
+              <View
+                style={{ flexDirection: "row", justifyContent: "flex-end" }}
+              >
+                <Text style={{ marginHorizontal: 20 }}>
+                  <FontAwesome5
+                    name="pen"
+                    size={16}
+                    color={"darkblue"}
+                    onPress={() => {
+                      setPost(post), setModalVisible(true);
+                    }}
+                  />
+                </Text>
+                <Text>
+                  <FontAwesome5
+                    name="trash"
+                    size={16}
+                    color={"red"}
+                    onPress={() => handleDeletePrompt(post?._id)}
+                  />{" "}
+                </Text>
+              </View>
+            )}
+          </View>
           <Text style={styles.desc}>{post?.description}</Text>
           <View style={styles.footer}>
             {post?.postedBy?.name && (
