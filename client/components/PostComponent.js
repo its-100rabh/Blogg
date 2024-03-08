@@ -43,7 +43,6 @@ const PostComponent = ({ post, myPostScreen }) => {
   };
   return (
     <View>
-      <Text style={styles.heading}>Total Blogs : {post?.length}</Text>
       <Text style={styles.warningtext}>
         *Restart the app to check the latest blogs on the top.
       </Text>
@@ -98,6 +97,7 @@ const PostComponent = ({ post, myPostScreen }) => {
           </View>
         </View>
       ))}
+      <Text style={styles.heading}>Total Blogs : {post?.length}</Text>
     </View>
   );
 };
@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 20,
+    marginBottom: 20,
   },
   card: {
     width: "100%",
