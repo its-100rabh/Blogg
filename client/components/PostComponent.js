@@ -5,12 +5,35 @@ import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import axios from "axios";
 import { useNavigation } from "@react-navigation/native";
 import EditModal from "./EditModal";
+import { useFonts } from "expo-font";
 
 const PostComponent = ({ post, myPostScreen }) => {
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [Post, setPost] = useState({});
   const navigation = useNavigation();
+  const [fontsLoaded, error] = useFonts({
+    "Poppins-Black": require("../assets/Fonts/Poppins/Poppins-Black.ttf"),
+    "Poppins-BlackItalic": require("../assets/Fonts/Poppins/Poppins-BlackItalic.ttf"),
+    "Poppins-Bold": require("../assets/Fonts/Poppins/Poppins-Bold.ttf"),
+    "Poppins-BoldItalic": require("../assets/Fonts/Poppins/Poppins-BoldItalic.ttf"),
+    "Poppins-ExtraBold": require("../assets/Fonts/Poppins/Poppins-ExtraBold.ttf"),
+    "Poppins-ExtraBoldItalic": require("../assets/Fonts/Poppins/Poppins-ExtraBoldItalic.ttf"),
+    "Poppins-ExtraLight": require("../assets/Fonts/Poppins/Poppins-ExtraLight.ttf"),
+    "Poppins-ExtraLightItalic": require("../assets/Fonts/Poppins/Poppins-ExtraLightItalic.ttf"),
+    "Poppins-Italic": require("../assets/Fonts/Poppins/Poppins-Italic.ttf"),
+    "Poppins-Light": require("../assets/Fonts/Poppins/Poppins-Light.ttf"),
+    "Poppins-Medium": require("../assets/Fonts/Poppins/Poppins-Medium.ttf"),
+    "Poppins-MediumItalic": require("../assets/Fonts/Poppins/Poppins-MediumItalic.ttf"),
+    "Poppins-Regular": require("../assets/Fonts/Poppins/Poppins-Regular.ttf"),
+    "Poppins-SemiBold": require("../assets/Fonts/Poppins/Poppins-SemiBold.ttf"),
+    "Poppins-SemiBoldItalic": require("../assets/Fonts/Poppins/Poppins-SemiBoldItalic.ttf"),
+    "Poppins-Thin": require("../assets/Fonts/Poppins/Poppins-Thin.ttf"),
+    "Poppins-ThinItalic": require("../assets/Fonts/Poppins/Poppins-ThinItalic.ttf"),
+  });
+  if (!fontsLoaded) {
+    return null;
+  }
   //handlepromt
   const handleDeletePrompt = (id) => {
     Alert.alert("Attention:", "Are you sure you want to delete the post?", [
@@ -108,7 +131,7 @@ const styles = StyleSheet.create({
   heading: {
     color: "green",
     textAlign: "center",
-    fontWeight: "bold",
+    fontFamily: "Poppins-SemiBold",
     fontSize: 20,
     marginBottom: 20,
   },
@@ -121,19 +144,22 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   title: {
-    fontWeight: "bold",
+    // fontWeight: "bold",
     paddingBottom: 10,
     fontSize: 15,
+    fontFamily: "Poppins-SemiBold",
   },
   footer: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 20,
+    fontFamily: "Poppins-SemiBold",
   },
   warningtext: {
     color: "red",
     fontSize: 12,
     textAlign: "center",
     margin: 10,
+    fontFamily: "Poppins-SemiBold",
   },
 });
