@@ -54,14 +54,14 @@ const Post = ({ navigation }) => {
           <TextInput
             style={styles.inputBox}
             placeholder="Add post title"
-            placeholderTextColor={"gray"}
+            placeholderTextColor={"black"}
             value={title}
             onChangeText={(text) => setTitle(text)}
           />
           <TextInput
             style={styles.inputBox}
             placeholder="Add post description"
-            placeholderTextColor={"gray"}
+            placeholderTextColor={"black"}
             multiline={true}
             numberOfLines={6}
             value={description}
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   inputBox: {
-    backgroundColor: "white",
+    backgroundColor: "#e1d5c9",
     textAlignVertical: "top",
     paddingTop: 10,
     width: 320,
