@@ -11,6 +11,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import FooterMenu from "../components/MENUS/FooterMenu";
 import axios from "axios";
+import { useFonts } from "expo-font";
 
 const Account = () => {
   const [state, setState] = useContext(AuthContext);
@@ -20,6 +21,28 @@ const Account = () => {
   const [password, setPassword] = useState(user?.password);
   const [email] = useState(user?.email);
   const [loading, setLoading] = useState(false);
+  const [fontsLoaded, error] = useFonts({
+    "Poppins-Black": require("../assets/Fonts/Poppins/Poppins-Black.ttf"),
+    "Poppins-BlackItalic": require("../assets/Fonts/Poppins/Poppins-BlackItalic.ttf"),
+    "Poppins-Bold": require("../assets/Fonts/Poppins/Poppins-Bold.ttf"),
+    "Poppins-BoldItalic": require("../assets/Fonts/Poppins/Poppins-BoldItalic.ttf"),
+    "Poppins-ExtraBold": require("../assets/Fonts/Poppins/Poppins-ExtraBold.ttf"),
+    "Poppins-ExtraBoldItalic": require("../assets/Fonts/Poppins/Poppins-ExtraBoldItalic.ttf"),
+    "Poppins-ExtraLight": require("../assets/Fonts/Poppins/Poppins-ExtraLight.ttf"),
+    "Poppins-ExtraLightItalic": require("../assets/Fonts/Poppins/Poppins-ExtraLightItalic.ttf"),
+    "Poppins-Italic": require("../assets/Fonts/Poppins/Poppins-Italic.ttf"),
+    "Poppins-Light": require("../assets/Fonts/Poppins/Poppins-Light.ttf"),
+    "Poppins-Medium": require("../assets/Fonts/Poppins/Poppins-Medium.ttf"),
+    "Poppins-MediumItalic": require("../assets/Fonts/Poppins/Poppins-MediumItalic.ttf"),
+    "Poppins-Regular": require("../assets/Fonts/Poppins/Poppins-Regular.ttf"),
+    "Poppins-SemiBold": require("../assets/Fonts/Poppins/Poppins-SemiBold.ttf"),
+    "Poppins-SemiBoldItalic": require("../assets/Fonts/Poppins/Poppins-SemiBoldItalic.ttf"),
+    "Poppins-Thin": require("../assets/Fonts/Poppins/Poppins-Thin.ttf"),
+    "Poppins-ThinItalic": require("../assets/Fonts/Poppins/Poppins-ThinItalic.ttf"),
+  });
+  if (!fontsLoaded) {
+    return null;
+  }
 
   //onPress
   const handleUpdate = async () => {
@@ -120,6 +143,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textAlign: "center",
     margin: 10,
+    fontFamily: "Poppins-SemiBold",
   },
   input: {
     marginTop: 20,
@@ -132,6 +156,7 @@ const styles = StyleSheet.create({
     width: 70,
     color: "gray",
     fontSize: 15,
+    fontFamily: "Poppins-SemiBold",
   },
   inputBox: {
     width: 250,
@@ -140,6 +165,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingLeft: 20,
     borderRadius: 5,
+    fontFamily: "Poppins-SemiBold",
   },
   updateBtn: {
     backgroundColor: "black",
@@ -152,5 +178,6 @@ const styles = StyleSheet.create({
   updateBtntext: {
     color: "white",
     fontSize: 16,
+    fontFamily: "Poppins-SemiBold",
   },
 });
